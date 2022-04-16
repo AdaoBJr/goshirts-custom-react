@@ -6,7 +6,7 @@ import {
   InputText,
   Label,
   Form,
-  useStyle,
+  useStyle
 } from '@goshirts-react-custom/core';
 import { FiEye, FiEyeOff } from 'react-icons/fi';
 
@@ -15,7 +15,7 @@ import { useCreateAccount } from '../../services/talons';
 
 const gender = [
   { key: 1, label: 'Masculino', value: 0 },
-  { key: 2, label: 'Feminino', value: 1 },
+  { key: 2, label: 'Feminino', value: 1 }
 ];
 
 const country = [
@@ -23,14 +23,14 @@ const country = [
   { key: 2, label: 'Chile', value: 'Chile' },
   { key: 3, label: 'Espanha', value: 'Espanha' },
   { key: 4, label: 'Estados Unidos', value: 'Estados Unidos' },
-  { key: 5, label: 'Inglaterra', value: 'Inglaterra' },
+  { key: 5, label: 'Inglaterra', value: 'Inglaterra' }
 ];
 
 interface createAccountProps {
   classes?: Object;
 }
 
-const createAccount: React.FC<createAccountProps> = (props) => {
+const createAccount: React.FC<createAccountProps> = props => {
   const classes = useStyle({ defaultClasses, classes: props.classes });
   const {
     handleChange,
@@ -38,7 +38,7 @@ const createAccount: React.FC<createAccountProps> = (props) => {
     handleSubmit,
     handleClickPwd,
     onValueChange,
-    activePwdIcon,
+    activePwdIcon
   } = useCreateAccount();
 
   return (
@@ -85,7 +85,7 @@ const createAccount: React.FC<createAccountProps> = (props) => {
             onValueChange={onValueChange}
             classes={{
               items: classes.dropCountryItems,
-              itemsActive: classes.dropCountryItemsActive,
+              itemsActive: classes.dropCountryItemsActive
             }}
           />
           <div className={classes.cpfPhone}>
@@ -125,7 +125,7 @@ const createAccount: React.FC<createAccountProps> = (props) => {
               label: classes.checkNewsletterLabel,
               input: classes.checkNewsletterInput,
               textVisible: classes.checkNewsletterTextVisible,
-              textInvisible: classes.checkNewsletterTextInvisible,
+              textInvisible: classes.checkNewsletterTextInvisible
             }}
             onChange={handleCheck}
           />
