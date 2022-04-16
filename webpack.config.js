@@ -1,4 +1,5 @@
 const path = require('path');
+const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin');
 
@@ -10,27 +11,30 @@ module.exports = {
   entry: path.resolve(__dirname, 'src', 'index.tsx'),
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: 'bundle.js',
+    filename: 'bundle.js'
   },
   resolve: {
-    extensions: ['.js', '.jsx', '.ts', '.tsx'],
+    extensions: ['.js', '.jsx', '.ts', '.tsx']
   },
   devServer: {
     static: {
-      directory: path.join(__dirname, 'public'),
+      directory: path.join(__dirname, 'public')
     },
     compress: true,
     historyApiFallback: true,
     port: process.env.REACT_APP_PORT || 3000,
     open: true,
-    hot: true,
+    hot: true
   },
   plugins: [
     isDevelopment && new ReactRefreshWebpackPlugin(),
     new HtmlWebpackPlugin({
       template: path.resolve(__dirname, 'public', 'index.html'),
-      favicon: path.resolve(__dirname, 'public', 'favicon.png'),
+      favicon: path.resolve(__dirname, 'public', 'favicon.png')
     }),
+    new webpack.DefinePlugin({
+      process: { env: {} }
+    })
   ].filter(Boolean),
   module: {
     rules: [
@@ -42,9 +46,9 @@ module.exports = {
           options: {
             plugins: [isDevelopment && require.resolve('react-refresh/babel')].filter(
               Boolean
-            ),
-          },
-        },
+            )
+          }
+        }
       },
       {
         test: /\.(j|t)s$/i,
@@ -54,9 +58,9 @@ module.exports = {
           options: {
             plugins: [isDevelopment && require.resolve('react-refresh/babel')].filter(
               Boolean
-            ),
-          },
-        },
+            )
+          }
+        }
       },
       {
         test: /\.css$/i,
@@ -67,12 +71,12 @@ module.exports = {
             loader: 'css-loader',
             options: {
               modules: {
-                localIdentName: '[name]__[local]__[hash:base64:5]',
-              },
-            },
-          },
-        ],
-      },
-    ],
-  },
+                localIdentName: '[name]__[local]__[hash:base64:5]'
+              }
+            }
+          }
+        ]
+      }
+    ]
+  }
 };

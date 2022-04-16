@@ -5,8 +5,9 @@ module.exports = {
     [
       '@babel/preset-react',
       {
-        runtime: 'automatic',
-      },
-    ],
+        runtime: 'automatic'
+      }
+    ]
   ],
+  plugins: ['@babel/plugin-transform-runtime']
 };
